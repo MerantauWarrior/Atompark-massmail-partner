@@ -1290,6 +1290,7 @@ input:checked + .label-check:after{
 .log-form__btns{
     display: flex;
     align-items: center;
+    margin-bottom: 30px;
 }
 .log-form__btns .btn{
     width: 208px;
