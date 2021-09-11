@@ -52,7 +52,7 @@ img, svg{
     max-width: 100%;
     height: auto;
 }
-input, button, select{
+input, button, select, textarea{
     padding: 0;
     border: none;
     outline: none;
@@ -108,23 +108,52 @@ h4, .h4{
     font-size: 14px;
     line-height: 16px;
 }
-.inp{
-    display: flex;
-    align-items: center;
+.inp,
+.txtarea{
     width: 100%;
-    height: 40px;
-    padding: 10px 20px;
     border: 1px solid #81859C;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    line-height: 16px;
     color: #333333;
 }
+.inp{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 16px;
+}
+.txtarea{
+    height: 145px;
+    padding: 12px 16px;
+    font-size: 12px;
+    line-height: 22px;
+    resize: none;
+}
+.txtarea::-webkit-scrollbar {
+    width: 3px;
+}
+.txtarea::-webkit-scrollbar-track {
+    background: #F5F7FF;
+}
+.txtarea::-webkit-scrollbar-thumb {
+    background: #81859C;
+}
 .inp-error{
-    border: 1px solid #E5353C;
+    border: 1px solid #E5353C !important;
+}
+.error-text{
+    display: none;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #E5353C;
+}
+.inp-error + .error-text{
+    display: block;
 }
 ::-webkit-input-placeholder {
     color: #81859C;
@@ -182,7 +211,7 @@ input:checked + .label-check:after{
 .select select{
     display: none;
 }
-.select-currency .select-selected{
+.select-selected{
     width: 100%;
     height: 40px;
     line-height: 38px;
@@ -193,12 +222,12 @@ input:checked + .label-check:after{
     color: #333333;
     background-color: #fff;
 }
-.select-currency .select-selected.select-arrow-active{
+.select-selected.select-arrow-active{
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom: none;
 }
-.select-currency .select-selected:after {
+.select-selected:after {
     position: absolute;
     content: "";
     top: 50%;
@@ -209,14 +238,14 @@ input:checked + .label-check:after{
     background: url("../img/general/select-arrow.svg") no-repeat 50% 50%;
     background-size: contain;
 }
-.select-currency .select-selected.select-arrow-active:after {
+.select-selected.select-arrow-active:after {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
 }
-.select-currency .select-items div, .select-selected{
+.select-items div, .select-selected{
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -225,20 +254,20 @@ input:checked + .label-check:after{
     cursor: pointer;
     user-select: none;
 }
-.select-currency .select-items div{
+.select-items div{
     height: 40px;
     border-top: 1px solid rgba(129, 133, 156, 0.5);
     line-height: 39px;
     color: #333333;
 }
-.select-currency .select-items div.same-as-selected{
+.select-items div.same-as-selected{
     background-color: rgba(129, 133, 156, 0.3);
     cursor: default;
 }
-.select-currency .select-items div span, .select-selected span{
+.select-items div span, .select-selected span{
     margin-left: 7px;
 }
-.select-currency .select-items{
+.select-items{
     position: absolute;
     top: 100%;
     left: 0;
@@ -251,7 +280,7 @@ input:checked + .label-check:after{
     border-radius: 6px;
     z-index: 999;
 }
-.select-currency .select-arrow-active + .select-items{
+.select-arrow-active + .select-items{
     border-top: none;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -259,8 +288,12 @@ input:checked + .label-check:after{
 .select-hide{
     display: none;
 }
-.select-currency .select-items div:not(.same-as-selected):hover{
+.select-items div:not(.same-as-selected):hover{
     background-color: rgba(129, 133, 156, 0.3);
+}
+.select-currency .select-items div span, .select-currency  .select-selected span {
+    width: 50%;
+    margin-left: auto;
 }
 
 .btn{
@@ -278,6 +311,12 @@ input:checked + .label-check:after{
     -moz-border-radius: 45px;
     border-radius: 45px;
     cursor: pointer;
+}
+.btn:disabled,
+.btn:hover:disabled{
+    background-color: #E8EBF2;
+    color: #333333;
+    cursor: not-allowed;
 }
 .btn svg{
     margin-right: 11px;
@@ -1191,6 +1230,84 @@ input:checked + .label-check:after{
 .products--reseller-page{
     padding-bottom: 170px;
 }
+/*---logreg---*/
+.logreg{
+    padding: 98px 0 136px 0;
+}
+.reg-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.reg-form__half{
+    width: 100%;
+    max-width: 400px;
+    margin: 0 45px;
+}
+.reg-form__b{
+    margin-top: 36px;
+}
+.logreg-title{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+}
+.logreg-form__row{
+    margin-top: 16px;
+}
+.reg-form__check{
+    margin-top: 40px;
+    margin-bottom: 33px;
+}
+.logreg-help{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.logreg-help .logreg-title{
+    margin-top: 16px;
+    margin-right: 40px;
+}
+.logreg-help__text{
+    margin-top: 16px;
+    font-size: 18px;
+    line-height: 21px;
+}
+.logreg-help__text a{
+    color: #00ADEE;
+}
+.reg-form__help{
+    margin-top: auto;
+}
+.log-form{
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.log-form__check{
+    margin: 22px 0 39px 0;
+}
+.log-form__btns{
+    display: flex;
+    align-items: center;
+}
+.log-form__btns .btn{
+    width: 208px;
+}
+.log-signup{
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #00ADEE;
+}
+.log-signup svg{
+    margin-left: 11px;
+}
+.log-or{
+    margin: 0 24px;
+}
 
 @media all and (max-width: 767px){
     /*header*/
@@ -1358,5 +1475,29 @@ input:checked + .label-check:after{
     }
     .faq--reseller-page{
         padding: 60px 0;
+    }
+    /*logreg*/
+    .logreg{
+        padding: 60px 0;
+        text-align: center;
+    }
+    .reg-form__half{
+        margin: 0;
+    }
+    .log-form__btns{
+        flex-direction: column;
+    }
+    .log-or{
+        margin: 24px 0;
+    }
+    .logreg-help{
+        justify-content: center;
+    }
+    .logreg-help .logreg-title{
+        margin-left: 40px;
+        margin-top: 24px;
+    }
+    .logreg-form__row{
+        text-align: left;
     }
 }
